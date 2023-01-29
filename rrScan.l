@@ -97,7 +97,7 @@ int main(int argc, char* argv[]) {
     }
 
     yyin = sourceFile;
-    yylex();
+    printf(":) All tokens of %s and their token type are shown as follows:\n", argv[1]);
     
     while ((token = yylex())>0) {
         printf("%s\t%s\n", token_str[token], yytext);
