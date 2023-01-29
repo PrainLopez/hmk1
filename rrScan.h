@@ -30,4 +30,4 @@ static char* token_str[] = {
 
 static char* error_str[] = {
     "Invalid character."
-}
+};
