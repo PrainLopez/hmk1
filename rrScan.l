@@ -62,8 +62,9 @@
 
 [_a-zA-Z][_0-9a-zA-Z]*              {return ID;}
 [0-9]+                              {return INT_C;} // 识别整数
-[0-9]+.?[0-9]*([eE][+-]?[0-9]+)?    {return NUM_C;} // 识别小数
-[0-9]+([eE][+-]?[0-9]+)?            {return NUM_C;} // 识别科学计数法
+[0-9]+\.?[0-9]*([eE][+-]?[0-9]+)?   {return NUM_C;} // 识别小数
+\.[0-9]+([eE][+-]?[0-9]+)?          {return NUM_C;} // 识别科学计数法
+[0-9]+\/[0-9]+                      {return NUM_C;} // 识别分数
 \"[^"]*\"                           {return STR_C;} // 识别字符串
 
 "/*"				    {BEGIN(COMMENT);}
@@ -77,6 +78,7 @@
 [ \t\n] {} //还有\n
 <<EOF>> {return 0;}
 
+[\?\#]  {return -1;}
 %%
 
 void scannerError(int errCode){
